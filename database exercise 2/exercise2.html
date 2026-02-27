@@ -1,0 +1,17 @@
+#use and to select students who are gmail users and id >2
+select * from students where email like "%gmail.com" and id >2
+
+#use or to select students named ayaan or mAx
+select * from students where name = 'max' or 'ayaan'
+
+#use prantheses to fix this query
+select * from students where (name = "ayaan" or name = "max") and id >3
+
+#write your own query combaning like,and, and or
+select * from students where (name like "%d" or name like "m%" and email like "%gmail.com") and id >1
+
+#use select then update or delete the output
+select * from students where name like "______d%" or name like "%med"
+
+update students set name ="maxamed" where name like "______d%" or name like "%med"
+delete from students where name like "%maxamed%"
