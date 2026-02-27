@@ -1,0 +1,43 @@
+create table students(
+id int primary key auto_increment,
+name varchar(100),
+email varchar(100))
+
+show tables
+INSERT INTO students (name, email) VALUES
+('Ahmed Hassan', 'ahmedhassan1@gmail.com'),
+('Mohamed Ali', 'mohamedali2@hotmail.com'),
+('Abdirahman Yusuf', 'abdirahmanyusuf3@yahoo.com'),
+('Hodan Mohamed', 'hodanmohamed4@gmail.com'),
+('Ayan Abdi', 'ayanabdi5@hotmail.com'),
+('Fatima Noor', 'fatimanoor6@yahoo.com'),
+('Omar Farah', 'omarfarah7@gmail.com'),
+('Khadra Ahmed', 'khadraahmed8@hotmail.com'),
+('Ismail Ibrahim', 'ismailibrahim9@yahoo.com'),
+('Fadumo Ali', 'fadumoali10@gmail.com'),
+('Mustafa Warsame', 'mustafawarsame11@hotmail.com'),
+('Nasra Hassan', 'nasrahassan12@yahoo.com'),
+('Said Mohamed', 'saidmohamed13@gmail.com'),
+('Maryan Abdirizak', 'maryanabdirizak14@hotmail.com'),
+('Abdullahi Nur', 'abdullahinur15@yahoo.com'),
+('Hani Osman', 'haniosman16@gmail.com'),
+('Yasin Jama', 'yasinjama17@hotmail.com'),
+('Sahra Ali', 'sahraali18@yahoo.com'),
+('Bilal Ahmed', 'bilalahmed19@gmail.com'),
+('Ruqiya Hassan', 'ruqiyahassan20@hotmail.com');
+
+select * from students
+# students their names ends D
+select * from students where name like '%D%'
+
+#students use gmail address 
+select * from students where email like '%gmail.com'
+
+#students whose their email contains the letter "O"
+select * from students where email like '%O%'
+
+#students their names are longer than 4 letters
+select * from students where name like '%____%'
+
+#creating my own search using name and finding the names that has space inside
+select * from students where name like '% %'
