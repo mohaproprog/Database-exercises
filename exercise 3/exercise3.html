@@ -1,0 +1,12 @@
+#show the last two students to regester
+select * from students order by id desc limit 2
+
+#show students with gmail, sorted by name
+select * from students where email like '%gmail.com' order by name asc
+
+# limit the results to 1 row and rename the column 
+select name as "students name", email as "students email" from students limit 1
+
+#create your own variation
+select name as "st name", email as 'st email' from students order by name asc
+limit 5 offset 1
