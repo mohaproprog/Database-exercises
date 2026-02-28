@@ -1,0 +1,51 @@
+CREATE TABLE score (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    score INT NOT NULL
+);
+show tables
+INSERT INTO score (name, email, score) VALUES
+('Ahmed Hassan', 'ahmedhassan1@gmail.com', 78),
+('Mohamed Ali', 'mohamedali2@hotmail.com', 85),
+('Abdirahman Yusuf', 'abdirahmanyusuf3@yahoo.com', 91),
+('Hodan Mohamed', 'hodanmohamed4@gmail.com', 67),
+('Ayan Abdi', 'ayanabdi5@hotmail.com', 88),
+('Fatima Noor', 'fatimanoor6@yahoo.com', 73),
+('Omar Farah', 'omarfarah7@gmail.com', 95),
+('Khadra Ahmed', 'khadraahmed8@hotmail.com', 82),
+('Ismail Ibrahim', 'ismailibrahim9@yahoo.com', 76),
+('Fadumo Ali', 'fadumoali10@gmail.com', 89),
+('Mustafa Warsame', 'mustafawarsame11@hotmail.com', 64),
+('Nasra Hassan', 'nasrahassan12@yahoo.com', 90),
+('Said Mohamed', 'saidmohamed13@gmail.com', 71),
+('Maryan Abdirizak', 'maryanabdirizak14@hotmail.com', 86),
+('Abdullahi Nur', 'abdullahinur15@yahoo.com', 79),
+('Hani Osman', 'haniosman16@gmail.com', 92),
+('Yasin Jama', 'yasinjama17@hotmail.com', 68),
+('Sahra Ali', 'sahraali18@yahoo.com', 84),
+('Bilal Ahmed', 'bilalahmed19@gmail.com', 77),
+('Ruqiya Hassan', 'ruqiyahassan20@hotmail.com', 93),
+
+('Ibrahim Adan', 'ibrahimadan21@yahoo.com', 74),
+('Samira Abdullahi', 'samiraabdullahi22@gmail.com', 81),
+('Khalid Omar', 'khalidomar23@hotmail.com', 69),
+('Nasteho Yusuf', 'nastehoyusuf24@yahoo.com', 87),
+('Hamza Mohamed', 'hamzamohamed25@gmail.com', 72),
+('Shukri Ali', 'shukriali26@hotmail.com', 94),
+('Farhan Abdi', 'farhanabdi27@yahoo.com', 66),
+('Amina Hassan', 'aminahassan28@gmail.com', 83),
+('Liban Farah', 'libanfarah29@hotmail.com', 75),
+('Hawo Osman', 'hawoosman30@yahoo.com', 80);
+select * from score
+#WHAT IS TOTAL STUDENTS
+select count(*) totaL from score
+
+#WHAT IS THE HIGTHEST AND THE LOWEST STUDENTS SCORE
+select max(score) 'top score', min(score) "low score" from score
+
+#how many students per domain
+select SUBSTRING_INDEX(email,('@'),-1) domain, count(*) total from score group by domain
+
+#avarage of each domain
+select SUBSTRING_INDEX(email,('@'),-1) domain, count(*) total, AVG(score) average from score group by domain order by domain
