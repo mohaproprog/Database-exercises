@@ -1,0 +1,48 @@
+#creating course
+create table courses(
+id int primary key auto_increment,
+courseName varchar(100))
+#inerting courses
+INSERT INTO courses (courseName) VALUES
+("Java"),
+("Python"),
+("C++"),
+("C#"),
+("JavaScript"),
+("HTML"),
+("CSS"),
+("SQL"),
+("PHP"),
+("Data Structures");
+
+#creating inrollments
+create table inrollments(
+id int primary key auto_increment,
+studentId int,
+courseId int,
+foreign key (studentId) references students(id),
+foreign key (courseId) references courses(id)
+)
+#inserting the data to inrollments
+insert into inrollments (student_id,course_id) 
+values(3,5),(6,7),(12,2),(15,2)
+
+select * from inrollments
+
+#using iner join to find who take a course
+select students.name,courses.title from inrollments
+join students on student_id = students.id
+join courses on course_id = courses.id
+
+#left join to list all students if its none give it none
+select name,courses.title from students 
+left join inrollments on students.id = inrollments.student_id
+left join courses on course_id = courses.id
+
+# grouping to know how many students per course
+select courses.title, count(*) from students 
+left join inrollments on students.id = inrollments.student_id
+left join courses on course_id = courses.id
+group  by courses.title
+
+
