@@ -1,0 +1,40 @@
+#generating 100k students 
+CREATE TABLE numbers (n INT PRIMARY KEY);
+delete from numbers
+
+INSERT INTO students (name, email)
+SELECT 
+    CONCAT('Student', 
+           a.N + b.N*10 + c.N*100 + d.N*1000 + e.N*10000 + 1),
+    CONCAT('student', 
+           a.N + b.N*10 + c.N*100 + d.N*1000 + e.N*10000 + 1,
+           '@gmail.com')
+FROM 
+(SELECT 0 N UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 
+ UNION ALL SELECT 5 UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9) a,
+(SELECT 0 N UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 
+ UNION ALL SELECT 5 UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9) b,
+(SELECT 0 N UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 
+ UNION ALL SELECT 5 UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9) c,
+(SELECT 0 N UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 
+ UNION ALL SELECT 5 UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9) d,
+(SELECT 0 N UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 
+ UNION ALL SELECT 5 UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9) e
+LIMIT 100000;
+
+select * from students
+SELECT COUNT(*) FROM students;
+
+
+# measure it without index
+explain select * from students where email like "student2%"
+
+#messure it with index to make the seatrching so smooth and easier
+create index idx_email on students(email)
+
+
+#i got 100,273 row and 11.11 filtered when i used explain without index beause it made full scan
+#i got 21,084 row and 100 filtered when i used with index and it maked the querey faster
+
+
+show index from students
