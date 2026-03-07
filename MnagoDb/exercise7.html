@@ -1,0 +1,22 @@
+1: use dugsiiye
+2: db.students.insertMany([
+  {name:"mohamed", age:22, email:"mohamed@gmail.com",courses:["java","html"]},
+  {name:"abdiyare",age:17,emal:"abdiyare@gmail.com",courses:["react","node"]},
+  {name:"saalim",age:16,email:"salimoo@gmail.com",courses:["html","css"]}
+])
+
+3:db.students.find()
+
+4:db.students.updateOne(
+  {email:"mohamed@gmail.com"},
+  {$set:{email:"mohaproprog@gmail.com"}}
+)
+
+5: db.students.deleteOne({name:"abdiyare"})
+
+6: db.students.updateMany(
+  {name:"mohamed"},
+  {$set:{address:{
+  city:"mogadishu",street:"km4",post_code:122
+  }}}
+)
