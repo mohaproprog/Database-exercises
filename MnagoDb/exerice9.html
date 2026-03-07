@@ -1,0 +1,55 @@
+# use set to update one email 
+db.students.updateOne(
+  {name:"Bob"},
+  {$set:{email:"Bob@Updated.com"}}
+)
+
+
+
+# use $inc to increase points 
+db.students.updateOne(
+  {name:"Bob"},
+  {$inc:{points:20}}
+)
+
+# use $push to add new courses
+db.students.updateOne(
+  {name:"Bob"},
+  {$push:{courses:"Hacking"}}
+)
+
+# use $pull to remove a course
+db.students.updateMany(
+  {},
+  {$pull:{courses:"react"}}
+)
+
+
+#  bonus use $inc and $set and $push at the same time
+
+db.students.updateOne(
+  {name:"Alice"},
+  {
+    $push:{courses:"react"},
+    $inc:{points:100},
+    $set:{email:"Alice.test.com"}
+  }
+)
+
+
+# use $each and to add multiple courses 
+
+db.students.updateMany(
+
+  {},
+  {$push:{courses:{$each:["dancing","running"]}}}
+)
+
+
+
+#use $in to remove many courses
+db.students.updateMany(
+
+  {},
+  {$pull:{courses:{$in:["dancing","running"]}}}
+)
