@@ -1,0 +1,19 @@
+# show your manager which courses that the students got #more than 85% and sort the higthest to lowest
+#'exaple: [course:react, total:5] [course:nodejs, total:3]
+
+db.students.aggregate([
+  { $unwind: "$courses" },
+  { $match: { "courses.score": { $gt: 85 } } },
+  { $group: { _id: "$courses.title", total: { $sum: 1 } } },
+  { $project: { course: "$_id", total: "$total", _id:0 } },
+  
+])
+
+# colculate average score foreach students course and show total
+
+db.students.aggregate([
+  { $unwind: "$courses" },
+  {$group:{_id:"$courses.title",total:{$sum:1},Avg_score:{$avg:"$courses.score"}}},
+  {$project:{course:"$_id",Avg_score:"$Avg_score",total:"$total",_id:0}},
+  {$sort:{Avg_score:-1}}
+])
